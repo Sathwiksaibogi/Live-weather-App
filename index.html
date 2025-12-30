@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Live-Weather-App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="searchBar">
+        <div class="searchBarParentDiv">
+            <input type="text" class="inputfield" placeholder="search city">
+
+            <svg onclick="fetchData()" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-search" viewBox="0 0 16 16">
+                <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+            </svg>
+        </div>
+    </div>
+    <div class="maincontentParentDiv d-flex">
+        <div class="left-div">
+            <div class="currenttempdiv leftdiv-child p-3 d-flex flex-column gap-2">
+                <h6 class="m-0" id="cityname">City Name</h6>
+                <h5 class="m-0"><span id="temp">0</span> &deg;C</h5>
+                <h6 class="m-0" id="skydes">sky Description</h6>
+                <hr class="line">
+                <div class="m-0 d-flex gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-calendar" viewBox="0 0 16 16">
+                        <path
+                            d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z" />
+                    </svg>
+                    <h6 class="m-0" id="cudate">Date</h6>
+                </div>
+                <div class="m-0 d-flex gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-clock" viewBox="0 0 16 16">
+                        <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z" />
+                        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0" />
+                    </svg>
+                    <h6 class="m-0" id="cutime">Time</h6>
+                </div>
+            </div>
+            <div class="nextfivedaysdiv leftdiv-child p-3 d-flex flex-column gap-3">
+                <h6 class="m-0 " id="comingtitle">Coming 5 Days</h6>
+                <div class="d-flex flex-column gap-2">
+                    <div class="forecastrow d-flex   align-items-center justify-content-between">
+                        <div class="d-flex gap-2 align-items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-cloud" viewBox="0 0 16 16">
+                                <path
+                                    d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383m.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z" />
+                            </svg>
+                            <h6 class="m-0" id="t1"><span>7</span> &deg;C</h6>
+                        </div>
+                        <h6 class="m-0" id="d1">Friday</h6>
+                        <h6 class="m-0" id="da1">03-05-2026</h6>
+                    </div>
+                    <div class="forecastrow d-flex   align-items-center justify-content-between">
+                        <div class="d-flex gap-2 align-items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-cloud" viewBox="0 0 16 16">
+                                <path
+                                    d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383m.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z" />
+                            </svg>
+                            <h6 class="m-0" id="t2"><span>7</span> &deg;C</h6>
+                        </div>
+                        <h6 class="m-0" id="d2">Friday</h6>
+                        <h6 class="m-0" id="da2">03-05-2026</h6>
+                    </div>
+                    <div class="forecastrow d-flex   align-items-center justify-content-between">
+                        <div class="d-flex gap-2 align-items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-cloud" viewBox="0 0 16 16">
+                                <path
+                                    d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383m.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z" />
+                            </svg>
+                            <h6 class="m-0" id="t3"><span>7</span> &deg;C</h6>
+                        </div>
+                        <h6 class="m-0" id="d3">Friday</h6>
+                        <h6 class="m-0" id="da3">03-05-2026</h6>
+                    </div>
+                    <div class="forecastrow d-flex   align-items-center justify-content-between">
+                        <div class="d-flex gap-2 align-items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-cloud" viewBox="0 0 16 16">
+                                <path
+                                    d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383m.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z" />
+                            </svg>
+                            <h6 class="m-0" id="t4"><span>7</span> &deg;C</h6>
+                        </div>
+                        <h6 class="m-0" id="d4">Friday</h6>
+                        <h6 class="m-0" id="da4">03-05-2026</h6>
+                    </div>
+                    <div class="forecastrow d-flex   align-items-center justify-content-between">
+                        <div class="d-flex gap-2 align-items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-cloud" viewBox="0 0 16 16">
+                                <path
+                                    d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383m.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z" />
+                            </svg>
+                            <h6 class="m-0" id="t5"><span>7</span> &deg;C</h6>
+                        </div>
+                        <h6 class="m-0" id="d5">Friday</h6>
+                        <h6 class="m-0" id="da5">03-05-2026</h6>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="right-div m-0 p-2">
+            <div class="first-row m-0 row d-flex align-items-center justify-content-between ">
+                <div class="first-child d-flex align-items-center gap-2">
+                    <img src="press.jpg" width="40px " height="40px">
+                    <div class="d-flex flex-column gap-1">
+                        <h6 class="m-0" id="press">Matric name</h6>
+                        <h6 class="m-0" id="pressval">Matric value</h6>
+                    </div>
+                </div>
+                <div class="first-child d-flex align-items-center gap-2">
+                    <img src="press.jpg" width="40px " height="40px">
+                    <div class="d-flex flex-column gap-1">
+                        <h6 class="m-0" id="humd">Matric name</h6>
+                        <h6 class="m-0" id="humdval">Matric value</h6>
+                    </div>
+                </div>
+                <div class="first-child d-flex align-items-center gap-2">
+                    <img src="press.jpg" width="40px " height="40px">
+                    <div class="d-flex flex-column gap-1">
+                        <h6 class="m-0" id="vis">Matric name</h6>
+                        <h6 class="m-0" id="visval">Matric value</h6>
+                    </div>
+                </div>
+                <div class="first-child d-flex align-items-center gap-2">
+                    <img src="press.jpg" width="40px " height="40px">
+                    <div class="d-flex flex-column gap-1">
+                        <h6 class="m-0" id="wisp">Matric name</h6>
+                        <h6 class="m-0" id="wispval">Matric value</h6>
+                    </div>
+                </div>
+
+            </div>
+            <div class="secondrow m-0 row d-flex align-items-center justify-content-between">
+                <div class="sec-child p-2 ">
+                    <h6>Air Quality Index(AQI)</h6>
+                    <div class=" m-0 d-flex align-items-center justify-content-between gap-2">
+                        <img src="Air quality.jpg" width="45px" height="40px">
+                        <div class="d-flex flex-column gap-1">
+                            <h6 class="m-0" id="co">AQI Matric</h6>
+                            <h6 class="m-0" id="coval">0</h6>
+                        </div>
+                        <div class="d-flex flex-column gap-1">
+                            <h6 class="m-0" id="no">AQI Matric</h6>
+                            <h6 class="m-0" id="noval">0</h6>
+                        </div>
+                        <div class="d-flex flex-column gap-1">
+                            <h6 class="m-0" id="no2">AQI Matric</h6>
+                            <h6 class="m-0" id="no2val">0</h6>
+                        </div>
+                        <div class="d-flex flex-column gap-1">
+                            <h6 class="m-0" id="so2">AQI Matric</h6>
+                            <h6 class="m-0" id="so2val">0</h6>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="sec-child p-3 gap-2">
+                    <h6>Sun Rise & Sun Set</h6>
+                    <div class="m-0 d-flex justify-content-between">
+                        <div class="m-0 d-flex align-items-center gap-2">
+                            <img src="sunrise.jpg" width="50px" height="50px">
+                            <div class="d-flex flex-column gap-1">
+                                <h6 class="m-0">Sun Rise</h6>
+                                <h6 class="m-0" id="risetime">6:00 AM</h6>
+                            </div>
+                        </div>
+                        <div class="m-0 d-flex align-items-center gap-2">
+                            <img src="moon.png" width="50px" height="50px">
+                            <div class="m-0 d-flex flex-column gap-1">
+                                <h6 class="m-0">Sun Set</h6>
+                                <h6 class="m-0" id="settime">7:00 PM</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="thirdrow row m-0 d-flex align-items-center justify-content-between">
+                <h5 class="m-0">Today</h5>
+                <div class="third-child">
+                    <div class="m-0 p-3 d-flex flex-column align-items-center gap-1">
+                        <h6 class="m-0">9 AM</h6>
+                        <img src="cloudsun.png" width="50px" height="50px">
+                        <h6 class="m-0">20 &deg;C</h6>
+                    </div>
+                </div>
+                <div class="third-child">
+                    <div class="m-0 p-3 d-flex flex-column align-items-center gap-1">
+                        <h6 class="m-0">12 PM</h6>
+                        <img src="sunrise.jpg" width="50px" height="50px">
+                        <h6 class="m-0">35 &deg;C</h6>
+                    </div>
+                </div>
+                <div class="third-child">
+                    <div class="m-0 p-3 d-flex flex-column align-items-center gap-1">
+                        <h6 class="m-0">15 PM</h6>
+                        <img src="cloud.png" width="50px" height="50px">
+                        <h6 class="m-0">15 &deg;C</h6>
+                    </div>
+                </div>
+                <div class="third-child">
+                    <div class="m-0 p-3 d-flex flex-column align-items-center gap-1">
+                        <h6 class="m-0">18 PM</h6>
+                        <img src="sunset.jpg" width="50px" height="50px">
+                        <h6 class="m-0">10 &deg;C</h6>
+                    </div>
+                </div>
+                <div class="third-child">
+                    <div class="m-0 p-3 d-flex flex-column align-items-center gap-1">
+                        <h6 class="m-0">21 PM</h6>
+                        <img src="moon.png" width="50px" height="50px">
+                        <h6 class="m-0">5 &deg;C</h6>
+                    </div>
+                </div>
+                <div class="third-child">
+                    <div class="m-0 p-3 d-flex flex-column align-items-center gap-1">
+                        <h6 class="m-0">00 AM</h6>
+                        <img src="moon.png" width="50px" height="50px">
+                        <h6 class="m-0">3 &deg;C</h6>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+        integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+    <script>
+        function dateFormat(timestamp) {
+            const date = new Date(timestamp * 1000);
+
+            const dateStr = date.toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: 'numeric'
+            });
+
+            const timeStr = date.toLocaleTimeString('en-US', {
+                hour: 'numeric',
+                minute: '2-digit',
+                hour12: true
+            });
+
+            const dayStr = date.toLocaleDateString('en-US', {
+                weekday: 'long'
+            });
+
+
+            return `${dateStr}, ${timeStr}, ${dayStr}`;
+        }
+
+        async function fetchforecastData(lat, lon) {
+            let forecastdata = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=f4aee3f647993ee17457ab85ed8fc40f&units=metric`)
+            let formattedforecastData = await forecastdata.json()
+            console.log(formattedforecastData)
+
+
+            $('#t1')[0].innerText = formattedforecastData.list[0].main.temp;
+            let date1 = dateFormat(formattedforecastData.list[0].dt)
+            $('#d1')[0].innerText = date1.split(",")[2]
+            $('#da1')[0].innerText = date1.split(",")[0]
+
+            $('#t2')[0].innerText = formattedforecastData.list[8].main.temp;
+            let date2 = dateFormat(formattedforecastData.list[8].dt)
+            $('#d2')[0].innerText = date2.split(",")[2]
+            $('#da2')[0].innerText = date2.split(",")[0]
+
+            $('#t3')[0].innerText = formattedforecastData.list[16].main.temp;
+            let date3 = dateFormat(formattedforecastData.list[16].dt)
+            $('#d3')[0].innerText = date3.split(",")[2]
+            $('#da3')[0].innerText = date3.split(",")[0]
+
+            $('#t4')[0].innerText = formattedforecastData.list[32].main.temp;
+            let date4 = dateFormat(formattedforecastData.list[32].dt)
+            $('#d4')[0].innerText = date4.split(",")[2]
+            $('#da4')[0].innerText = date4.split(",")[0]
+
+            $('#t5')[0].innerText = formattedforecastData.list[39].main.temp;
+            let date5 = dateFormat(formattedforecastData.list[39].dt)
+            $('#d5')[0].innerText = date5.split(",")[2]
+            $('#da5')[0].innerText = date5.split(",")[0]
+
+
+        }
+
+        async function fetchAQIdata(lat, lon) {
+            let AQIdata = await fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=f4aee3f647993ee17457ab85ed8fc40f`)
+            let formattedAQIdata = await AQIdata.json()
+            // console.log(formattedAQIdata)
+            let list = formattedAQIdata.list[0].components;
+            // console.log(list)
+            $('#co')[0].innerText = "co";
+            $('#coval')[0].innerText = list.co
+
+            $('#no')[0].innerText = "no";
+            $('#noval')[0].innerText = list.no
+
+            $('#no2')[0].innerText = "no2";
+            $('#no2val')[0].innerText = list.no2
+
+            $('#so2')[0].innerText = "so2 ";
+            $('#so2val')[0].innerText = list.so2
+
+        }
+
+
+        async function fetchData() {
+            // alert("Fetching data")
+            let cityName = document.getElementsByClassName("inputfield")[0].value;
+            // console.log("current city", cityName);
+            let requestData = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=f4aee3f647993ee17457ab85ed8fc40f&units=metric`)
+            // console.log(requestData)
+            let formattedData = await requestData.json();
+            // console.log(formattedData);
+            let responsecityName = formattedData.name
+            let responseTemp = formattedData.main.temp
+            let skydes = formattedData.weather[0].description
+            $('#cityname')[0].innerText = responsecityName
+            $('#temp')[0].innerText = responseTemp
+            $('#skydes')[0].innerText = skydes
+            // console.log("responsecity name", responsecityName);
+            // console.log("responseTemp", responseTemp)
+            // console.log("skydes",skydes)
+            let properDate = dateFormat(formattedData.dt);
+            // console.log(properDate);
+            let Date = properDate.split(",")[0]
+            let time = properDate.split(",")[1]
+            $('#cudate')[0].innerText = Date
+            $('#cutime')[0].innerText = time
+            let sunrise = dateFormat(formattedData.sys.sunrise)
+            let sunset = dateFormat(formattedData.sys.sunset)
+
+            let sunrisetime = sunrise.split(",")[1];
+            let sunsettime = sunset.split(",")[1];
+            $('#risetime')[0].innerText = sunrisetime
+            $('#settime')[0].innerText = sunsettime
+
+            let pressure = formattedData.main.pressure
+            $('#press')[0].innerText = "Pressure"
+            $('#pressval')[0].innerText = pressure
+            let humidity = formattedData.main.humidity
+            $('#humd')[0].innerText = "Humidity"
+            $('#humdval')[0].innerText = humidity
+            let visibility = formattedData.visibility
+            $('#vis')[0].innerText = "Visibility"
+            $('#visval')[0].innerText = visibility
+            let windspeed = formattedData.wind.speed
+            $('#wisp')[0].innerText = "Windspeed"
+            $('#wispval')[0].innerText = windspeed
+
+            let lat = formattedData.coord.lat
+            let lon = formattedData.coord.lon
+            fetchAQIdata(lat, lon)
+            fetchforecastData(lat, lon)
+
+
+        }
+
+    </script>
+
+</body>
+
+</html>

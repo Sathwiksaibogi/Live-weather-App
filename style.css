@@ -1,0 +1,229 @@
+body {
+    background: url(./sky.jpg);
+    background-position: center;
+    /* Changed from bottom for better framing */
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    /* Prevents the tiling you see in your image */
+    background-size: cover;
+    /* Stretches the image to fill the screen */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+}
+
+.searchBar {
+    height: 10vh;
+    /* background: black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchBarParentDiv {
+    width: 50%;
+    height: fit-content;
+    position: relative;
+}
+
+.inputfield {
+    width: 100%;
+    border-radius: 25px;
+    padding: 10px;
+    outline: none;
+
+
+}
+
+.bi-search {
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    color: black;
+}
+
+.bi-search:hover {
+    cursor: pointer;
+}
+
+.maincontentParentDiv {
+    height: 90vh;
+    flex-direction: row;
+}
+
+.left-div {
+    width: 30%;
+    /* border: 1px solid red; */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* background-color: aqua; */
+}
+
+.leftdiv-child {
+    width: 85%;
+    height: 40vh;
+    background: rgba(212, 212, 212, 0.4);
+    margin: auto;
+    border-radius: 15px;
+    backdrop-filter: blur(15px);
+    /* padding: 15px; */
+}
+
+.currenttempdiv h6 {
+    font-size: larger;
+}
+
+#cityname {
+    font-size: x-large;
+}
+
+#temp {
+    font-size: x-large;
+}
+
+#comingtitle {
+    font-size: x-large;
+}
+
+.right-div {
+    width: 70%;
+    /* border: 1px solid red; */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    /* background-color: brown; */
+}
+
+.row {
+    height: 27vh;
+    /* border: 1px solid red; */
+    width: 100%;
+}
+
+.first-child {
+    width: 20%;
+    height: 22vh;
+    background: rgba(212, 212, 212, 0.4);
+    /* margin: auto; */
+    border-radius: 15px;
+    backdrop-filter: blur(15px);
+}
+
+.sec-child {
+    width: 45%;
+    height: 22vh;
+    background: rgba(212, 212, 212, 0.4);
+    /* margin: auto; */
+    border-radius: 15px;
+    backdrop-filter: blur(15px);
+}
+
+.third-child {
+    width: 13%;
+    height: 22vh;
+    background: rgba(212, 212, 212, 0.4);
+    /* margin: auto; */
+    border-radius: 15px;
+    backdrop-filter: blur(15px);
+}
+
+@media only screen and (max-width:767px) {
+    .maincontentParentDiv {
+        height: 90vh;
+        flex-direction: column;
+    }
+
+    .left-div {
+        width: 100%;
+        /* border: 1px solid red; */
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 10px;
+        /* background-color: aqua; */
+    }
+
+    .right-div {
+        width: 100%;
+    }
+
+    .searchBar {
+        width: 100%;
+    }
+
+    .searchBarParentDiv {
+        width: 85%;
+        height: fit-content;
+        position: relative;
+    }
+
+    .row {
+        height: 90vh;
+    }
+
+    .first-row {
+        width: 100%;
+        flex-wrap: wrap;
+        /* flex-direction: column; */
+        margin: auto;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+
+
+    }
+
+    .first-child {
+        width: 40%;
+        height: 22vh;
+        background: rgba(212, 212, 212, 0.4);
+        margin: auto;
+        border-radius: 15px;
+        backdrop-filter: blur(15px);
+    }
+
+    .secondrow {
+        width: 100%;
+        /* flex-wrap: wrap; */
+        flex-direction: column;
+        margin: auto;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .sec-child {
+        width: 70%;
+        height: 22vh;
+        background: rgba(212, 212, 212, 0.4);
+        margin: auto;
+        border-radius: 15px;
+        backdrop-filter: blur(15px);
+    }
+
+    .thirdrow {
+        width: 100%;
+        flex-wrap: wrap;
+        /* flex-direction: column; */
+        margin: auto;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+
+    }
+.third-child {
+    width: 25%;
+    height: 22vh;
+    background: rgba(212, 212, 212, 0.4);
+    margin: auto;
+    border-radius: 15px;
+    backdrop-filter: blur(15px);
+}
+
+
+
+}
