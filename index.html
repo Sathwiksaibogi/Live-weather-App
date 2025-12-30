@@ -252,6 +252,8 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
+
+    <script src="config.js"></script>
     <script>
         function dateFormat(timestamp) {
             const date = new Date(timestamp * 1000);
@@ -277,7 +279,7 @@
         }
 
         async function fetchforecastData(lat, lon) {
-            let forecastdata = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=f4aee3f647993ee17457ab85ed8fc40f&units=metric`)
+            let forecastdata = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${CONFIG.API_KEY}&units=metric`)
             let formattedforecastData = await forecastdata.json()
             console.log(formattedforecastData)
 
@@ -311,7 +313,7 @@
         }
 
         async function fetchAQIdata(lat, lon) {
-            let AQIdata = await fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=f4aee3f647993ee17457ab85ed8fc40f`)
+            let AQIdata = await fetch(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${CONFIG.API_KEY}`)
             let formattedAQIdata = await AQIdata.json()
             // console.log(formattedAQIdata)
             let list = formattedAQIdata.list[0].components;
@@ -335,7 +337,7 @@
             // alert("Fetching data")
             let cityName = document.getElementsByClassName("inputfield")[0].value;
             // console.log("current city", cityName);
-            let requestData = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=f4aee3f647993ee17457ab85ed8fc40f&units=metric`)
+            let requestData = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${CONFIG.API_KEY}&units=metric`)
             // console.log(requestData)
             let formattedData = await requestData.json();
             // console.log(formattedData);
